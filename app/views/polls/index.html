@@ -3,8 +3,8 @@
 <div ng-controller='PollList'>
 	<ul>
 		<li ng-repeat='poll in all'>
-			<input name='selected' type='radio' ng-model='poll.done'>
-			<span> {{poll.question}}</span>				
+			<input name='selected' type='radio' ng-click='selectedHandler(poll)'>
+			<span> {{poll.question}}</span>
 		</li>
 	</ul>
 	<form ng-submit='vote()'>
