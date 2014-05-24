@@ -1,20 +1,27 @@
 angular.module('poll', []);
 
-function PollList ($scope) {
-	$.getJSON("/polls", function(polls) {
-		$scope.all = polls;
-		$scope.$apply();
-	});
+function PollList ($scope, $http) {
+	$http({method: 'GET', url: '/polls.json'}).
+		success(function(polls, status, headers, config) {
+    	$scope.all = polls;  
+    }).
+    error(function(data, status, headers, config) {
+      	alert('Houve um erro ao carregar os dados da enquete!');
+		});
 
-	$scope.vote = function () {
+	$scope.vote = function () {		
 		if (!$scope.selected) {
 			return alert('Selecione uma opção na enquete');
 		}
-		$.ajax('/polls/' + $scope.selected.id + '/vote', { type: 'PUT' }).then(function(polls) {
-			$scope.all = polls;
-			$scope.$apply();
-			alert('Obrigado por votar');
-		});
+
+		$http({method: 'PUT', url: '/polls/' + $scope.selected.id + '/vote', headers: { 'Content-type': 'application/json'}}).
+			success(function(polls, status, headers, config) {
+	    	$scope.all = polls;  
+	    	alert('Obrigado por votar!');
+	    }).
+	    error(function(data, status, headers, config) {
+	      	alert(':( Houve um erro durante o processo e seu voto não foi processado.');
+			});
 	}
 
 	$scope.selectedHandler = function(poll) {
