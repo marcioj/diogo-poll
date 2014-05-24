@@ -13,7 +13,18 @@ describe PollsController do
 			action
 		end
 
-		it { expect(assigns(:polls)).to eq([poll])  }
+		it { expect(assigns(:polls)).to eq([poll]) }
+
+	end
+
+	describe "PUT vote" do
+		let!(:poll) { Poll.create! }
+
+		def action 
+			put :vote, id: poll.id
+		end	
+
+		it { expect{ action }.to change{poll.reload.votes.to_i}.by(1) }		
 
 	end
 end

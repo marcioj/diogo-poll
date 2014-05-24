@@ -7,7 +7,12 @@ class PollsController < ApplicationController
 			format.html
 			format.json { render json: @polls}
 		end
+	end
 
+	def vote
+		@poll = Poll.find(params[:id])
+		@poll.increment!(:votes)
+		render json: @poll
 	end
 
 end

@@ -1,5 +1,5 @@
 DiogoPoll::Application.routes.draw do
-  
+  put 'polls/:id/vote' => 'polls#vote'
   get 'polls' => 'polls#index'
   root 'polls#index'
   # The priority is based upon order of creation: first created -> highest priority.
