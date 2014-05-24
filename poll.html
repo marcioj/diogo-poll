@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app='poll'>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<head>
+	<title> Angular First Application </title>
+	<script src="angular-1.2.13/angular.min.js"> </script>
+	<script src="poll-controller.js"> </script>
+</head>
+<h2> Enquete do Diogo</h2>
+<body>
+<h3>O que você prefere: </h3>
+	<div ng-controller='PollList'>
+		<ul>
+			<li ng-repeat='todo in all | filter : todoText'>
+				<input type='checkbox' ng-model='todo.done'>
+				<span> {{todo.text}}</span>				
+			</li>
+		</ul>
+		<form ng-submit='add()'>
+			<input type='text' ng-model='todoText'>
+			<button type='submit'>Adcionar</button>
+		</form>
+	</div>
+
+</body>
+</html>
