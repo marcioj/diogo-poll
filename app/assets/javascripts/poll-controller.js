@@ -5,7 +5,7 @@ function PollList ($scope) {
 		{text: '40 anos de vida sem envelhecimento', done: false},
 		{text: 'R$ 2 milhoões', done: true}
 	],
-	$scope.add = function () {
+	$scope.vote = function () {
 		$scope.all.push({text: $scope.todoText, done: false});
 	}
 }
