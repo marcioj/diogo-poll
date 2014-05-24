@@ -2,9 +2,9 @@
 <h3>O que você prefere: </h3>
 <div ng-controller='PollList'>
 	<ul>
-		<li ng-repeat='todo in all | filter : todoText'>
-			<input type='checkbox' ng-model='todo.done'>
-			<span> {{todo.text}}</span>				
+		<li ng-repeat='poll in all'>
+			<input name='selected' type='radio' ng-model='poll.done'>
+			<span> {{poll.question}}</span>				
 		</li>
 	</ul>
 	<form ng-submit='vote()'>
