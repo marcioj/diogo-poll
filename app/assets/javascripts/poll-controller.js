@@ -6,7 +6,7 @@ function PollList ($scope, $http) {
     	$scope.all = polls;  
     }).
     error(function(data, status, headers, config) {
-      	alert('Houve um erro ao carregar os dados da enquete!');
+    		$scope.output('Houve um erro ao carregar os dados da enquete!');
 		});
 
 	$scope.vote = function () {		
@@ -20,11 +20,15 @@ function PollList ($scope, $http) {
 	    	alert('Obrigado por votar!');
 	    }).
 	    error(function(data, status, headers, config) {
-	      	alert(':( Houve um erro durante o processo e seu voto não foi processado.');
+	      	alert('Ops :( Houve um erro durante a votação! Tente mais tarde.');
 			});
 	}
 
 	$scope.selectedHandler = function(poll) {
 		$scope.selected = poll;
+	}
+
+	$scope.output = function(mensagem) {
+		$scope.log(mensagem);
 	}
 }
