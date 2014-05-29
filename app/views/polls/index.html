@@ -1,13 +1,13 @@
 <h2>Enquete do Diogo</h2>
 <h3>O que você prefere: </h3>
-<div ng-controller='PollList'>
+<div ng-controller='pollsController'>
 	<ul>
-		<li ng-repeat='poll in all'>
+		<li ng-repeat='poll in pollList'>
 			<input name='selected' type='radio' ng-click='selectedHandler(poll)'>
 			<span> {{poll.question}}</span>
 		</li>
 	</ul>
-	<form ng-submit='vote()'>
+	<form ng-submit='doVote()'>
 		<button type='submit'>Votar</button>
 	</form>
 </div>

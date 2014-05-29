@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='poll'>
+<html ng-app='PollApp'>
 <head>
   <title>DiogoPoll</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<ng-view></ng-view>
 <%= yield %>
 
 </body>
